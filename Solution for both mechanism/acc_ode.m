@@ -1,3 +1,4 @@
+% For ode 45 with four bar linkage
 
 function acc = acc_ode(M, F_dyn, Cq_fun_dyn, g_cap, t, q)
 

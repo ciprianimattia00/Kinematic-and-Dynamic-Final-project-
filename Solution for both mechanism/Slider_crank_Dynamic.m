@@ -70,7 +70,7 @@ plot(u(:,4), u(:,5), ...
     u(:,7), u(:,8), ...
     u(:,10), u(:,11) );
 title('positions in dynamic with g');
-legend('link 1','link 2','slider');
+legend('crank','link','slider');
 xlabel('x [m]');
 ylabel('y [m]');
 
@@ -88,8 +88,20 @@ plot(u(:,4), u(:,5), ...
     u(:,7), u(:,8), ...
     u(:,10), u(:,11) );
 title('positions in dynamic with g_cap');
-legend('link 1','link 2', 'slider');
+legend('crank','link', 'slider');
 xlabel('x [m]');
 ylabel('y [m]');
+
+[t, y] = ode45(@(t, q)acc_ode2(M, F_dyn, Cq_fun_dyn, g_cap, t, q) , [0,0.3],  [q_0_dyn ;zeros(size(q_0_dyn))]);
+
+figure
+plot(y(:,4), y(:,5), ...
+    y(:,7), y(:,8), ...
+    y(:,10), y(:,11));
+title('positions in dynamic with g_cap with ode45');
+legend('crank','link','slider');
+xlabel('x [m]');
+ylabel('y [m]');
+axis equal
 
 
